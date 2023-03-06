@@ -12,6 +12,7 @@ let playerScoreBox = document.getElementById("playerScoreBox");
 let computerScoreBox = document.getElementById("computerScoreBox");
 let possibleMoves = ["rock", "paper", "scissors"];
 const buttons = document.querySelectorAll('button');
+let computerIMG = document.getElementById("computerSelect")
 
 
 
@@ -22,16 +23,19 @@ const buttons = document.querySelectorAll('button');
     
     if (randomNumber == 0) {
         let computerSelection = possibleMoves[randomNumber];
+        computerIMG.src = "assets/images/Steen.png";
         return computerSelection;
     };
     
     if (randomNumber == 1) {
         let computerSelection = possibleMoves[randomNumber]
+        computerIMG.src = "assets/images/Papier.png";
         return computerSelection;
     };
     
     if (randomNumber == 2) {
         let computerSelection = possibleMoves[randomNumber];
+        computerIMG.src = "assets/images/Schaar.png";
         return computerSelection;
     };
   };

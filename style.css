@@ -1,41 +1,51 @@
-.header {
-    margin: auto;
+.image {
+    width: 150px;
+    height: 150px;
+    background-color: antiquewhite;
+    border-radius: 1000px;
+    border-style: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
     text-align: center;
 }
 
 .playingField {
+    display: flex;
     width: 50%;
     margin: auto;
-    display: flex;
-}
-
-.playerSelection {
-    flex: 1 1 0;
-    margin: auto;
-    width: 50%;
-    display: flex;
-    width: auto;
-    height: 50%;
     justify-content: center;
     align-items: center;
 }
 
-.btn {
-    width: 250px;
-    height: 250px;
-    border-radius: 1000px;
-    padding: 20px;
-    margin: 10px;
-    background-color: black;
-    color: white;
+.playerSelection {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.image {
-    width: 300px;
-    height: 300px;
+.computerField {
+    display: flex;
+    width: 50%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.computerSelection {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-image {
+    margin: 5px;
+    border: none;
+    background-color: antiquewhite;
     border-radius: 1000px;
-    padding: 20px;
-    margin: 10px;
-    color: white;
-    background-color:blanchedalmond;
 }
