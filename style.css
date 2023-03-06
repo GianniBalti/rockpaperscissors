@@ -1,0 +1,41 @@
+.header {
+    margin: auto;
+    text-align: center;
+}
+
+.playingField {
+    width: 50%;
+    margin: auto;
+    display: flex;
+}
+
+.playerSelection {
+    flex: 1 1 0;
+    margin: auto;
+    width: 50%;
+    display: flex;
+    width: auto;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width: 250px;
+    height: 250px;
+    border-radius: 1000px;
+    padding: 20px;
+    margin: 10px;
+    background-color: black;
+    color: white;
+}
+
+.image {
+    width: 300px;
+    height: 300px;
+    border-radius: 1000px;
+    padding: 20px;
+    margin: 10px;
+    color: white;
+    background-color:blanchedalmond;
+}

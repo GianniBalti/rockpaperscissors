@@ -1,7 +1,6 @@
 //--------------------First Part-------------------------
 
-"use strict";
-
+let body = document.getElementById("body");
 let Rock = document.getElementById("rock");
 let Scissors = document.getElementById("scissors");
 let Paper = document.getElementById("paper");
@@ -11,74 +10,56 @@ let computerScore = 0;
 let playerScore = 0;
 let playerScoreBox = document.getElementById("playerScoreBox");
 let computerScoreBox = document.getElementById("computerScoreBox");
+let possibleMoves = ["rock", "paper", "scissors"];
+const buttons = document.querySelectorAll('button');
+
 
 
 // randomly generates Rock, Paper or Scissors
 
   function getComputerSelection() {
-    let randomNumber = Math.floor(Math.random() * 3)+1;
+    let randomNumber = Math.floor(Math.random() * 3);
+    
+    if (randomNumber == 0) {
+        let computerSelection = possibleMoves[randomNumber];
+        return computerSelection;
+    };
+    
     if (randomNumber == 1) {
-        let computerSelection = "Rock";
+        let computerSelection = possibleMoves[randomNumber]
         return computerSelection;
-    }
+    };
+    
     if (randomNumber == 2) {
-        let computerSelection = "Paper";
+        let computerSelection = possibleMoves[randomNumber];
         return computerSelection;
-    }
-    if (randomNumber == 3) {
-        let computerSelection = "Scissors";
-        return computerSelection;
-    }
-  }
+    };
+  };
   
   //-------------Second Part--------------------------------
   
   // play a single round of the game (this is the game logic)
   
   function playRound(computerMove, playerMove) {
-       if (computerMove == "Rock" && playerMove == "Scissors") {
+    if (computerMove == "rock" && playerMove == "scissors" || computerMove == "paper" && playerMove == "rock" || computerMove == "scissors" && playerMove == "paper") {
         computerScore = computerScore + 1;
         computerScoreBox.innerHTML = computerScore;
         resultBox.innerHTML = "You lose try again!";
-        console.log = "You lose try again!";
-    }
-    if (computerMove == "Paper" && playerMove == "Rock") {
-        computerScore = computerScore + 1;
-        computerScoreBox.innerHTML = computerScore;
-        console.log("You lose try again!")
-        resultBox.innerHTML = "You lose try again!";
-    }
-    if (computerMove == "Scissors" && playerMove == "Paper") {
-        computerScore = computerScore + 1;
-        computerScoreBox.innerHTML = computerScore;
-        console.log("You lose try again!")
-        resultBox.innerHTML = "You lose try again!";
-    }
+        console.log("You lose try again!");
+    };
+
     if (computerMove == playerMove) {
-        console.log("it's a tie")
+        console.log("Its a tie!");
         resultBox.innerHTML = "it's a tie";
-    } 
-    if (playerMove == "Rock" && computerMove == "Scissors") {
+    };
+
+    if (playerMove == "rock" && computerMove == "scissors" || playerMove == "paper" && computerMove == "rock"|| playerMove == "paper" && computerMove == "rock") {
         playerScore = playerScore + 1;
         playerScoreBox.innerHTML = playerScore;
-        console.log("You win!")
+        console.log("You win!");
         resultBox.innerHTML = "You win!";
-    }
-    if (playerMove == "Paper" && computerMove == "Rock") {
-        playerScore = playerScore + 1;
-        playerScoreBox.innerHTML = playerScore;
-        console.log("You win!")
-        resultBox.innerHTML = "You win!";
-    }
-    if (playerMove == "Scissors" && computerMove == "Paper") {
-        playerScore = playerScore + 1;
-        playerScoreBox.innerHTML = playerScore;
-        console.log("You win!")
-        resultBox.innerHTML = "You win!";
-    }
-    
-    
-  }
+    };
+};
   
   //-----------Final Part-------------------------------------
   
@@ -87,31 +68,47 @@ let computerScoreBox = document.getElementById("computerScoreBox");
   function game() {
     
 
-    Rock.addEventListener("click", function() {
-        playerMove = "Rock";
-        let computerMove = getComputerSelection();
-        console.log(playerMove);
-        playRound(computerMove,playerMove);
-      });
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            playerMove = button.id;
+            let computerMove = getComputerSelection();
+            playRound(computerMove, playerMove);
+            checkGameOver();
+        })
+    })
 
-    Paper.addEventListener("click", function() {
-        let computerMove = getComputerSelection();
-        playerMove = "Paper";
-        playRound(computerMove, playerMove);
-      });
+    // Rock.addEventListener("click", function() {
+    //     playerMove = "Rock";
+    //     let computerMove = getComputerSelection();
+    //     playRound(computerMove, playerMove);
+    //     checkGameOver();
+    //   }
+    // );
 
-    Scissors.addEventListener("click", function() {
-        let computerMove = getComputerSelection();
-        playerMove = "Scissors";
-        playRound(computerMove, playerMove);
-      }); 
+    // Paper.addEventListener("click", function() {
+    //     let computerMove = getComputerSelection();
+    //     playerMove = "Paper";
+    //     playRound(computerMove, playerMove);
+    //     checkGameOver();
+    //   });
+
+    // Scissors.addEventListener("click", function() {
+    //     let computerMove = getComputerSelection();
+    //     playerMove = "Scissors";
+    //     playRound(computerMove, playerMove);
+    //     checkGameOver();
+    //   }); 
     
-  }
-  game();
+  };
 
-//   function setPlayerMove(move) {
-//     console.log(move);
-//     playerMove = move;
-//     console.log(playerMove);
-//     return playerMove;
-//   }
+  function checkGameOver() {
+    if (playerScore === 5) {
+        body.innerHTML = "<h1>GAME OVER, YOU WON!</h1>";
+      }
+    if (computerScore === 5) {
+        body.innerHTML = "<h1>GAME OVER, THE COMPUTER WON!</h1>"
+    }
+  }
+
+  game();
+  

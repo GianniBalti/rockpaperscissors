@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js" defer></script>
     
 </head>
-<body>
+<body id="body">
+    <div class="header">
+        <h1>RPS</h1>
+    </div>
     <div class="playingField">
         <div class="playerSelection">
-            <input type="button" id="rock" value="Rock">
-            <input type="button" id="paper" value="Paper">
-            <input type="button" id="scissors" value="Scissors">
+            <button id="rock" class="card-image" data-image="rock">
+                <img src="assets/images/Steen.png" alt="Rock" class="image">
+            </button>
+            <button  id="paper" class="card-image" data-image="paper">
+                <img src="assets/images/Papier.png" alt="Paper" class="image" />
+            </button>
+            <button id="scissors"  class="card-image" data-image="scissors">
+                <img src="assets/images/Schaar.png" alt="Scissors" class="image" />
+            </button>
         </div>
     </div>
     <div class="resultField">
@@ -19,6 +30,9 @@
         <p>Computer Score: </p><span><p id="computerScoreBox"></p></span>
         <p>Player Score: </p><span><p id="playerScoreBox"></p></span>
     </div>
+
+    <div id="main">
+
+    </div>
 </body>
-<script type="text/javascript" src="script.js"></script>
 </html>
