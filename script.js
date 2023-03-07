@@ -107,10 +107,10 @@ let computerIMG = document.getElementById("computerSelect")
 
   function checkGameOver() {
     if (playerScore === 5) {
-        body.innerHTML = "<h1>GAME OVER, YOU WON!</h1>";
+        body.innerHTML = "<h1>GAME OVER, YOU WON!</h1>" + `<button onClick="location.reload()">RESET</button>`;
       }
     if (computerScore === 5) {
-        body.innerHTML = "<h1>GAME OVER, THE COMPUTER WON!</h1>"
+        body.innerHTML = "<h1>GAME OVER, THE COMPUTER WON!</h1>" + `<button onClick="location.reload()">RESET</button>`;
     }
   }
 

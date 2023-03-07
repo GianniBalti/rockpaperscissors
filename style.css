@@ -49,3 +49,36 @@ p {
     background-color: antiquewhite;
     border-radius: 1000px;
 }
+
+.resultContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.computerScore {
+    background-color: dimgray;
+    padding: 25px 50px;
+    align-self: center;
+    font-size: 40px;
+    color: goldenrod;
+    margin: 5px;
+    margin-top: 50px;
+}
+
+.playerScore {
+    background-color: dimgray;
+    padding: 25px 50px;
+    align-self: center;
+    font-size: 40px;
+    color: goldenrod;
+    margin: 5px;
+    margin-top: 50px;
+}
+
+.roundResult {
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 40px;
+    margin-top: 50px;
+}
