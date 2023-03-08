@@ -12,7 +12,13 @@ let playerScoreBox = document.getElementById("playerScoreBox");
 let computerScoreBox = document.getElementById("computerScoreBox");
 let possibleMoves = ["rock", "paper", "scissors"];
 const buttons = document.querySelectorAll('button');
-let computerIMG = document.getElementById("computerSelect")
+let computerIMG = document.getElementById("computerSelect");
+let playerIMG = document.getElementById("playerSelect");
+let steen = "assets/images/Steen.png";
+let papier = "assets/images/Papier.png";
+let schaar = "assets/images/Schaar.png";
+let resultMessage = document.getElementById("message");
+let resultField = document.getElementById("resultField");
 
 
 
@@ -23,19 +29,19 @@ let computerIMG = document.getElementById("computerSelect")
     
     if (randomNumber == 0) {
         let computerSelection = possibleMoves[randomNumber];
-        computerIMG.src = "assets/images/Steen.png";
+        computerIMG.src = "assets/images/Rock.png";
         return computerSelection;
     };
     
     if (randomNumber == 1) {
         let computerSelection = possibleMoves[randomNumber]
-        computerIMG.src = "assets/images/Papier.png";
+        computerIMG.src = "assets/images/Paper.png";
         return computerSelection;
     };
     
     if (randomNumber == 2) {
         let computerSelection = possibleMoves[randomNumber];
-        computerIMG.src = "assets/images/Schaar.png";
+        computerIMG.src = "assets/images/Scissors.png";
         return computerSelection;
     };
   };
@@ -47,21 +53,26 @@ let computerIMG = document.getElementById("computerSelect")
   function playRound(computerMove, playerMove) {
     if (computerMove == "rock" && playerMove == "scissors" || computerMove == "paper" && playerMove == "rock" || computerMove == "scissors" && playerMove == "paper") {
         computerScore = computerScore + 1;
-        computerScoreBox.innerHTML = computerScore;
-        resultBox.innerHTML = "You lose try again!";
+        computerScoreBox.innerHTML = "Computerscore: " + computerScore;
+        resultMessage.innerText = computerMove.toUpperCase() + " BEATS " + playerMove.toUpperCase() + "!" + " YOU LOSE!";
         console.log("You lose try again!");
+        console.log(playerScore, computerScore);
     };
 
     if (computerMove == playerMove) {
         console.log("Its a tie!");
-        resultBox.innerHTML = "it's a tie";
+        resultMessage.innerText = computerMove.toUpperCase() + " EQUALS " + playerMove.toUpperCase() + "!" + " IT'S A TIE!";
+        console.log(playerScore, computerScore);
+        //resultBox.innerHTML = "it's a tie";
     };
 
-    if (playerMove == "rock" && computerMove == "scissors" || playerMove == "paper" && computerMove == "rock"|| playerMove == "paper" && computerMove == "rock") {
+    if (playerMove == "rock" && computerMove == "scissors" || playerMove == "paper" && computerMove == "rock"|| playerMove == "scissors" && computerMove == "paper") {
         playerScore = playerScore + 1;
-        playerScoreBox.innerHTML = playerScore;
+        playerScoreBox.innerHTML = "Playerscore: " + playerScore;
         console.log("You win!");
-        resultBox.innerHTML = "You win!";
+        resultMessage.innerText = playerMove.toUpperCase() + " BEATS " + computerMove.toUpperCase() + "!" + " YOU WIN!";
+        console.log(playerScore, computerScore);
+        //resultBox.innerHTML = "You win!";
     };
 };
   
@@ -75,8 +86,11 @@ let computerIMG = document.getElementById("computerSelect")
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             playerMove = button.id;
+            let src = button.id.charAt(0).toUpperCase() + button.id.slice(1);
+            playerIMG.src = "assets/images/" + src +".png";
             let computerMove = getComputerSelection();
             playRound(computerMove, playerMove);
+            console.log(playerScore, computerScore);
             checkGameOver();
         })
     })
@@ -107,12 +121,53 @@ let computerIMG = document.getElementById("computerSelect")
 
   function checkGameOver() {
     if (playerScore === 5) {
-        body.innerHTML = "<h1>GAME OVER, YOU WON!</h1>";
+        resultMessage.innerText = "GAME OVER, YOU WON!";
+        buttons.forEach((button) => {
+          button.disabled = true;
+        })
+        let resetButton = document.createElement("button");
+        resetButton.className = "resetButton";
+        resetButton.textContent = "Reset";
+        resultField.append(resetButton);
+        resetButton.addEventListener('click', () => {
+          playerScore = 0;
+          computerScore = 0;
+          buttons.forEach((button) => {
+            button.disabled = false;
+          });
+
+          resultMessage.innerText = "Pick a weapon!"
+          computerScoreBox.innerHTML = "Computerscore: 0"; 
+          playerScoreBox.innerHTML = "Playerscore: 0";
+          resetButton.remove();     
+        });
+
       }
-    if (computerScore === 5) {
-        body.innerHTML = "<h1>GAME OVER, THE COMPUTER WON!</h1>"
+
+      if (computerScore === 5) {
+        resultMessage.innerText = "GAME OVER, THE COMPUTER WON!";
+        buttons.forEach((button) => {
+          button.disabled = true;
+        })
+        let resetButton = document.createElement("button");
+        resetButton.className = "resetButton";
+        resetButton.textContent = "Reset";
+        resultField.append(resetButton);
+        resetButton.addEventListener('click', () => {
+          playerScore = 0;
+          computerScore = 0;
+          buttons.forEach((button) => {
+            button.disabled = false;
+          });
+          resultMessage.innerText = "Pick a weapon!"
+          computerScoreBox.innerHTML = "Computerscore: 0";
+          playerScoreBox.innerHTML = "Playerscore: 0";
+          resetButton.remove();   
+  
+        });
+
+      }
     }
-  }
 
   game();
   

@@ -10,9 +10,47 @@
 </head>
 <body id="body">
     <div class="header">
-        <h1>RPS</h1>
+        <h1>Rock Paper Scissors</h1>
     </div>
-    <p>Pick your weapon!</p>
+    <div class="mainWindow">
+        <div class="sideMenu">
+            <div class="pickWeapon">Pick your weapon!</div>
+            <button id="rock" class="card-image" data-image="rock">
+                <img src="assets/images/Rock.png" alt="Rock" class="image">
+            </button>
+            <button  id="paper" class="card-image" data-image="paper">
+                <img src="assets/images/Paper.png" alt="Paper" class="image" />
+            </button>
+            <button id="scissors"  class="card-image" data-image="scissors">
+                <img src="assets/images/Scissors.png" alt="Scissors" class="image" />
+            </button>
+        </div>
+        <div class="playResult">
+            <div class="playingField">
+                <div class="playerBox">
+                    <div class="selectionHeader">Your selection!</div>
+                    <div class="cardHolder">
+                        <div id="playerSelection" class="card-image-select"></div>
+                        <img  id="playerSelect" src="" alt="" class="image">
+                    </div>
+                    <div class="playerScoreBox" id="playerScoreBox">Playerscore: 0</div>
+                </div>
+                <div class="computerBox">
+                    <div class="selectionHeader">Computer selection!</div>
+                    <div class="cardHolder">
+                        <div id="computerSelection" class="card-image-select"></div>
+                        <img  id="computerSelect" src="" alt="" class="image">
+                    </div>
+                    <div class="computerScoreBox" id="computerScoreBox">Computerscore: 0</div>
+                </div>
+            </div>
+            <div id="resultField" class="resultField">
+                <p id="message" class="message">SUP!</p>
+            </div> 
+        </div>
+           
+    </div>
+    <!-- <p>Pick your weapon!</p>
     <div class="playingField">
         <div class="playerSelection">
             <button id="rock" class="card-image" data-image="rock">
@@ -25,8 +63,8 @@
                 <img src="assets/images/Schaar.png" alt="Scissors" class="image" />
             </button>
         </div>
-    </div>
-    <p>The computer picked: </p>
+    </div> -->
+    <!-- <p>The computer picked: </p>
     <div class="computerField">
         <div class="computerSelection">
             <button id="computerSelection" class="card-image">
@@ -40,10 +78,6 @@
         <p id="result-p"></p>
         <p>Computer Score: </p><span><p id="computerScoreBox"></p></span>
         <p>Player Score: </p><span><p id="playerScoreBox"></p></span>
-    </div>
-
-    <div id="main">
-
-    </div>
+    </div> -->
 </body>
 </html>
